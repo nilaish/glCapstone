@@ -1,6 +1,5 @@
 FROM ubuntu:18.04
 MAINTAINER Gowerthanan Ravi
-
 RUN apt-get update -y && \
 apt-get install -y python-pip3 python-dev 
 

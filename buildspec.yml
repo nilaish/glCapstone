@@ -1,22 +1,21 @@
 version: 0.2
+
 phases:
- install:
-  commands:
-   - echo Executing Install Phase
-  finally:
-   - echo Executing Install Finally
- pre_build:
-  commands:
-   - echo Executing pre_build Phase
-  finally:
-   - echo Executing pre_build Finally
- build:
-  commands:
-   - echo Executing build Phase
-  finally:
-   - echo Executing build Finally
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region us-east-1
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t glcapstoneairpg .
+      - docker tag glcapstoneairpg:latest 223998089108.dkr.ecr.us-east-1.amazonaws.com/glcapstoneairpg:latest     
   post_build:
-   commands:
-    - echo Executing post_build Phase
-   finally:
-    - echo Executing post_build Finally
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 223998089108.dkr.ecr.us-east-1.amazonaws.com/glcapstoneairpg:latest
