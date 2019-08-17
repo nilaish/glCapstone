@@ -1,5 +1,5 @@
 version: 0.2
-phases: 
+phases:
 	install:
 		commands:
 			- echo Executing Install Phase
