@@ -12,10 +12,10 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t glcapstoneairpg .
-      - docker tag glcapstoneairpg:latest 223998089108.dkr.ecr.us-east-1.amazonaws.com/glcapstoneairpg:latest     
+      - docker build -t eksco-ecrdo-g8zo3xw1bf75 .
+      - docker tag eksco-ecrdo-g8zo3xw1bf75:latest 223998089108.dkr.ecr.us-east-1.amazonaws.com/eksco-ecrdo-g8zo3xw1bf75:latest     
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 223998089108.dkr.ecr.us-east-1.amazonaws.com/glcapstoneairpg:latest
+      - docker push 223998089108.dkr.ecr.us-east-1.amazonaws.com/eksco-ecrdo-g8zo3xw1bf75:latest
