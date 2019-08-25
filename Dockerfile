@@ -18,5 +18,7 @@ RUN pip install -r requirements.txt
 
 #CMD [ "app.py" ]
 
+RUN start service apache2
+
 EXPOSE 80
 EXPOSE 8080
