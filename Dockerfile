@@ -12,7 +12,10 @@ MAINTAINER Nilesh Mehta
 #CMD [ "app.py" ]
 
 RUN apt-get update -y
-RUN apt-get install apache2 -y
-RUN service apache2 restart
+RUN apt-get install nginx -y
+RUN ufw allow 'Nginx HTTP'
+
+#RUN apt-get install apache2 -y
+#RUN service apache2 restart
 
 EXPOSE 80
