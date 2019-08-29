@@ -1,17 +1,4 @@
 FROM ubuntu:18.04
 MAINTAINER Nilesh Mehta
-RUN apt-get update -y && \
-apt-get install -y python-pip python-dev 
-
-# We copy just the requirements.txt first to leverage Docker cache 
-COPY ./requirements.txt requirements.txt
-#WORKDIR /app
-RUN pip install -r requirements.txt 
-#COPY . /app
-#ENTRYPOINT [ "python" ] 
-#CMD [ "app.py" ]
-
-RUN apt-get install apache2 -y
-RUN service apache2 restart
-
-EXPOSE 80
+RUN su -RUN apt-get updateRUN apt-get -y install software-properties-commonRUN add-apt-repository ppa:webupd8team/javaRUN apt-get -y update
+RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections RUN apt-get -y install oracle-java8-installer RUN apt-get -y install tomcat8RUN echo "JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> /etc/default/tomcat8 EXPOSE 8080 CMD service tomcat8 start && tail -f /var/lib/tomcat8/logs/catalina.out
